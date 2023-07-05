@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    docker { image 'gaahrdner/packer-ansible-resource:latest' }
+    docker { image 'packer-ansible-resource:latest' }
   }
   stages {
     stage('Test') {
