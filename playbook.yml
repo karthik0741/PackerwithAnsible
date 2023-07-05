@@ -1,0 +1,33 @@
+---
+- name: This playbook is used to install the packages
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Update the Packages
+      yum:
+        name: '*'
+        state: latest
+
+    - name: Install Git
+      yum:
+        name: git
+        state: latest
+
+    - name: Install SSM
+      yum:
+       name: https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
+       state: present
+      
+    - name: Install cloudwatch agent
+      yum:
+        name: https://s3.amazonaws.com/amazoncloudwatch-agent/amazon_linux/amd64/latest/amazon-cloudwatch-agent.rpm
+        state: present
+
+    - name: Download AWS Inspector agent installer
+      get_url:
+        url: "https://inspector-agent.amazonaws.com/linux/latest/install"
+        dest: /tmp/aws_inspector_agent_installer
+
+    - name: Install AWS Inspector agent installer
+      shell: sudo bash /tmp/aws_inspector_agent_installer
