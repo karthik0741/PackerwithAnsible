@@ -1,10 +1,13 @@
-node {
-  agent none
+pipeline {
+  agent any
   stages {
     stage('Test') {
       steps {
-        sh 'packer init .'
-        sh 'packer build aws-ami-v1.pkr.hcl'
+        sh """
+        cd /home/karthik/PackerwithAnsible
+        packer init .
+        packer build aws-ami-v1.pkr.hcl
+        """
       }
     }
   }
