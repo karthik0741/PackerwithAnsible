@@ -12,6 +12,8 @@ pipeline {
     }
     stage(" execute Ansible") {
            steps {
-                ansiblePlaybook disableHostKeyChecking: true, installation: 'Ansible', playbook: 'playbook.yml
+             ansiblePlaybook disableHostKeyChecking: true, installation: 'ansible', playbook: 'playbook.yml'
+           }
+    }
   }
 }
