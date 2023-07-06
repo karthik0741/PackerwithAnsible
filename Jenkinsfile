@@ -1,7 +1,5 @@
 pipeline {
-  agent {
-    docker { image 'packer-ansible-resource:latest' }
-  }
+  agent none
   stages {
     stage('Test') {
       steps {
