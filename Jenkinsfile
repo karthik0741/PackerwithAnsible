@@ -10,5 +10,8 @@ pipeline {
         sh 'packer build aws-ami-v1.pkr.hcl'
       }
     }
+    stage(" execute Ansible") {
+           steps {
+                ansiblePlaybook disableHostKeyChecking: true, installation: 'Ansible', playbook: 'playbook.yml
   }
 }
