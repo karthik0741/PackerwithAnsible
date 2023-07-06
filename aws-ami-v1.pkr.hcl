@@ -29,5 +29,10 @@ build {
   sources = [
     "source.amazon-ebs.amazon-linux"
   ]
+  provisioner "ansible" {
+        playbook_file = "/home/karthik/packer/playbook.yml"
+        user = "ec2-user"
+        use_proxy = false
+    }
   }
 
