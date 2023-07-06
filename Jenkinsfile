@@ -4,7 +4,7 @@ pipeline {
     stage('Test') {
       steps {
         sh """
-        cd /var/lib/jenkins/workspace/BuildAMI
+        #!/bin/bash
         packer init .
         packer build aws-ami-v1.pkr.hcl
         """
