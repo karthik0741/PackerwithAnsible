@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        sh 'echo "Hello World"'
+        sh 'echo pwd'
         sh 'packer init .'
         sh 'packer build aws-ami-v1.pkr.hcl'
       }
