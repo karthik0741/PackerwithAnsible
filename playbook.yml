@@ -24,28 +24,6 @@
         name: lvm2
         state: latest
 
-    - name: Add Docker repo
-      get_url:
-        url: https://download.docker.com/linux/centos/docker-ce.repo
-        dest: /etc/yum.repos.d/docker-ce.repo
-
-    - name: Install Docker
-      package:
-        name: docker-ce
-        state: latest
-
-    - name: Start Docker service
-      service:
-        name: docker
-        state: started
-        enabled: yes
-
-    - name: Add user ec2-user to docker group
-      user:
-        name: ec2-user
-        groups: docker
-        append: yes
-
     - name: Install Git
       yum:
         name: git
