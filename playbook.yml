@@ -17,20 +17,10 @@
           - lvm2
         state: latest
 
-    - name: Add Docker repo
-      get_url:
-        url: https://download.docker.com/linux/centos/docker-ce.repo
-        dest: /etc/yum.repos.d/docker-ce.repo
-
-    - name: Repo Update  
-      shell: sed -i 's/$releasever/7/g' /etc/yum.repos.d/docker-ce.repo
-
-    - name: Install Docker
+    - name: Install docker
       yum:
-        name:
-          - docker-ce
-          - docker-ce-cli
-          - containerd.io
+        name: docker
+        update_cache: yes
         state: latest
 
     - name: Install Git
