@@ -9,19 +9,25 @@
         name: '*'
         state: latest
 
-    - name: Install yum utils
+    - name: Install required packages
       yum:
-        name: yum-utils
+        name:
+          - yum-utils
+          - device-mapper-persistent-data
+          - lvm2
         state: latest
 
-    - name: Install device-mapper-persistent-data
-      yum:
-        name: device-mapper-persistent-data
-        state: latest
+    - name: Add Docker repo
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
 
-    - name: Install lvm2
+    - name: Install Docker
       yum:
-        name: lvm2
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
         state: latest
 
     - name: Install Git
